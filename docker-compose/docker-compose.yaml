@@ -1,0 +1,136 @@
+version: '3.9'
+networks:
+  appnetwork:
+    driver: bridge
+volumes:
+  files:
+
+services:
+  postgresdb:
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_HOST=${DB_HOST}
+    ports:
+      - '1234:${DB_PORT}'
+    networks:
+      - appnetwork
+  vehicle_master:
+    image: jpalaparthi/vehiclemaster:v0.1.2
+    container_name: vehicle_master
+    environment:
+      - PORT=${APP_PORT}
+      - DB_CONN=host=${DB_HOST} user=${DB_USER} password=${DB_PASSWORD} dbname=${DB_NAME} port=5432 sslmode=disable TimeZone=Asia/Shanghai
+    ports:
+      - '8081:${APP_PORT}'
+    networks:
+      - appnetwork
+    depends_on:
+      - postgresdb
+    volumes:
+      - files:/uploads
+  postgresdb-test:
+    image: postgres:latest
+    container_name: postgres_container_test
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_HOST=${DB_HOST_TEST}
+    ports:
+      - '1235:${DB_PORT}'
+    networks:
+      - appnetwork
+  vehicle_master_test:
+    image: jpalaparthi/vehiclemaster:v0.1.2
+    container_name: vehicle_master_test
+    environment:
+      - PORT=${APP_PORT_TEST}
+      - DB_CONN=host=${DB_HOST_TEST} user=${DB_USER} password=${DB_PASSWORD} dbname=${DB_NAME} port=5432 sslmode=disable TimeZone=Asia/Shanghai
+    ports:
+      - '8082:${APP_PORT_TEST}'
+    networks:
+      - appnetwork
+    depends_on:
+      - postgresdb
+    volumes:
+      - files:/uploads
+  pgadmin:
+    image: dpage/pgadmin4  
+    container_name: pgadmin_container
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PG_ADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PG_ADMIN_PASSWORD}
+    ports:
+      - '58080:${PG_ADMIN_PORT}'
+    networks:
+      - appnetwork
+    depends_on:
+      - postgresdb
+      - postgresdb-test
+      - postgresdb-keycloak
+  postmanTest:
+    platform: linux/amd64
+    image: postman/newman:alpine
+    container_name: postmanTests
+    command:
+      run vehicle-master-test.postman_collection.json -k
+      -r cli,json
+      --reporter-json-export="reports/vehicle-masterAPITests.json"
+    volumes:
+      - ./bootstrap/scripts/test:/etc/newman
+    depends_on:
+      - postgresdb-test
+      - vehicle_master_test
+    networks:
+      - appnetwork
+  postmanLoad:
+    platform: linux/amd64
+    image: postman/newman:alpine
+    container_name: postmanLoad
+    command:
+      run vehicle-master-load.postman_collection.json -k
+      -r cli,json
+      --reporter-json-export="reports/vehicle-masterAPILoads.json"
+    volumes:
+      - ./bootstrap/scripts/load:/etc/newman
+    depends_on:
+      - postgresdb-test
+      - vehicle_master
+    networks:
+      - appnetwork
+  postgresdb-keycloak:
+    image: postgres:latest
+    volumes:
+      - "./_me_data/postgresdb-keycloak:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+    ports:
+      - 1237:5432
+    networks:
+      - appnetwork
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    ports:
+      - "8080:8080"
+    command: start-dev --spi-theme-static-max-age=-1 --spi-theme-cache-themes=false --spi-theme-cache-templates=false
+    environment:
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgresdb-keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: keycloak
+      KEYCLOAK_ADMIN: root
+      KEYCLOAK_ADMIN_PASSWORD: oooo
+      
+    volumes:
+      - ./keycloak/themes/custom/login/register.ftl:/opt/keycloak/themes/custom/login/register.ftl
+      - ./keycloak/themes/custom/login/theme.properties:/opt/keycloak/themes/custom/login/theme.properties
+    depends_on:
+      - postgresdb-keycloak
+    networks:
+      - appnetwork
