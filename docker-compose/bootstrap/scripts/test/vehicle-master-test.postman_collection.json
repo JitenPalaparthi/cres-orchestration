@@ -1,0 +1,926 @@
+{
+	"info": {
+		"_postman_id": "1d0efd9d-df51-4113-9673-03b2d03d0020",
+		"name": "vehicle-master-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1261917"
+	},
+	"item": [
+		{
+			"name": "company",
+			"item": [
+				{
+					"name": "add-company",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Thrifty\",\n    \"compID\":\"10111\",\n    \"city\":\"Dubai\",\n    \"email\":\"thrifty@123.com\",\n    \"contactDetails\":\"9618558500\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/company/add",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"company",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-company byid",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/company/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"company",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getallByOffset-company",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}  /v1/private/company/all/0/2",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}  ",
+							"path": [
+								"v1",
+								"private",
+								"company",
+								"all",
+								"0",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-company",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"city\":\"Abudhabi\",\n    \"email\":\"thrifty@123.com\",\n    \"contactDetails\":\"9618558511\",\n    \"moreDetails\":{\"customer-care\":\"1800909090\"}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}  /v1/private/company/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}  ",
+							"path": [
+								"v1",
+								"private",
+								"company",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "feature",
+			"item": [
+				{
+					"name": "add-feature",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"1 Air Bags\",\n    \"image\":\"http://airbags.com\",\n    \"description\":\"Front Seat Airbags\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/feature/add",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"feature",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-feature",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/feature/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"feature",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-all-features",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/feature/all/0/20",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"feature",
+								"all",
+								"0",
+								"20"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit-feature",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"4 Air Bags\",\n    \"image\": \"http://airbags.ae\",\n    \"description\": \"Front and rear airbags\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/feature/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"feature",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vehicle-spec",
+			"item": [
+				{
+					"name": "add vehicle-spec",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"make\": \"Toyota\",\n  \"model\": \"Corolla\",\n  \"group\":\"a\",\n  \"year\":\"2022\",\n  \"bodyType\": \"sedan\",\n  \"transmissionType\": \"AT\",\n  \"sippCode\":\"ab123d\",\n  \"vehicleType\": \"NORMAL\",\n  \"fuelType\": \"Petrol\",\n  \"color\": \"White\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/vehiclespec/add",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"vehiclespec",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-vehicle-spec-by-id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}  /v1/private/vehiclespec/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}  ",
+							"path": [
+								"v1",
+								"private",
+								"vehiclespec",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get vehicle-spec-all-skip-limit",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}}  /v1/private/vehiclespec/all/0/5",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}}  ",
+							"path": [
+								"v1",
+								"private",
+								"vehiclespec",
+								"all",
+								"0",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-vehicle-spec",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"sippCode\": \"aabbcdef11223344\",\n        \"year\":\"2021\",\n        \"group\":\"d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/vehiclespec/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"vehiclespec",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "image",
+			"item": [
+				{
+					"name": "add-image",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vehicleSpecID\":1,\n    \"url\":\"http://airbags.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/image/add",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"image",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-image",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/image/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"image",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit-image",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"vehicleSpecID\":1,\n   \"url\":\"http://mycar.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/image/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"image",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "techDetails",
+			"item": [
+				{
+					"name": "add-techDetail",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vehicleSpecID\":1,\n    \"detail\":{\n        \"Engine\":\"1.5 Liter, DOHC 16-valves, 4 cylinder, in-line\",\n        \"Max Power\":\"99hp/6,000 rpm\",\n        \"Torque\":\"13.7 kg-m/4,000 rpm\",\n        \"Fuel system\":\"Electronic Fuel Injection Control\",\n        \"Transmission\":\"Automatic\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/techDetail/add",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"techDetail",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-techDetail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/techDetail/1?=",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"techDetail",
+								"1"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit-techDetail",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vehicleSpecID\":1,\n    \"detail\":{\n        \"Engine\":\"1.5 Liter, DOHC 16-valves, 4 cylinder, in-line\",\n        \"Max Power\":\"99hp/6,000 rpm\",\n        \"Torque\":\"13.7 kg-m/4,000 rpm\",\n        \"Fuel system\":\"Electronic Fuel Injection Control\",\n        \"Transmission\":\"Automatic\",\n        \"Fuel Type\":\"Petrol\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/techDetail/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"techDetail",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vehicleSpecFeature",
+			"item": [
+				{
+					"name": "add-vehicleSpecFeature",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vehicleSpecID\":1,\n    \"featureID\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/vehicleSpecFeature/add",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"vehicleSpecFeature",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-vehicleSpecFeature",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/vehicleSpecFeature/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"vehicleSpecFeature",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit-vehicleSpecFeature",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"vehicleSpecID\":1,\n    \"featureID\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/vehicleSpecFeature/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"vehicleSpecFeature",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tear-down",
+			"item": [
+				{
+					"name": "delete-company-byid",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/company/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"company",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-vehicle-spec",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/vehiclespec/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"vehiclespec",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-feature",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/feature/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"feature",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-image",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/image/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"image",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-techDetail",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/techDetail/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"techDetail",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-vehicleSpecFeature",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}:{{PORT}} /v1/private/vehicleSpecFeature/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"port": "{{PORT}} ",
+							"path": [
+								"v1",
+								"private",
+								"vehicleSpecFeature",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "HOST",
+			"value": "vehicle_master_test",
+			"type": "string"
+		},
+		{
+			"key": "PORT",
+			"value": "50081",
+			"type": "string"
+		}
+	]
+}
