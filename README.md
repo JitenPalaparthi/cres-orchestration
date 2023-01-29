@@ -15,7 +15,7 @@ cres project orchestration scripts
 
 # keycloak
 
-    - keycloak component automatically up and run when docker-compose is called that is in the docker-compose directory.
+    - keycloak component automatically up and run when docker-compose up -d is called that is in the docker-compose directory.
     - a new realm is already create named "CRES"
     - a new client is already created under CRES realm.Client named "cres-app"
     - to access keycloak browse http://localhost:8080
